@@ -1,0 +1,55 @@
+---
+title: "Oct 4 2024"
+author: "KG"
+format: html
+editor: visual
+---
+
+Set Up
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(here)
+```
+
+Read in data
+```{r}
+drugs <- read.csv(here("data", "drug_resistance.csv"))
+```
+
+See what the data looks like and look for errors
+```{r}
+str(drugs)
+```
+push treatment variable into factor
+```{r}
+drugs$Treatment <- as.factor(drugs$Treatment)
+levels(drugs$Treatment)
+```
+
+Fix the treatment variable (use function which (returns row #) and operator %in%)
+Find the rows that have any version of control
+```{r}
+fix <- which(drugs$Treatment %in% c("cantrol", "control", "Control")) #identify rows that need repair
+
+drugs$Treatment[fix] <- "control"
+levels(drugs$Treatment) #need to relist the levels after fixing 
+drugs$Treatment <- factor(drugs$Treatment) #tells R to relist levels of factor after change
+levels(drugs$Treatment)
+```
+
+```{r}
+#Fix the rest of the column Treatment
+fix2 <- which(drugs$Treatment %in% c("drug x 2", "drug2", "Drugx2"))
+drugs$Treatment[fix2] <- "Drugx2"
+levels(drugs$Treatment)
+drugs$Treatment <- factor(drugs$Treatment)
+```
+
+
+```{r}
+levels(drugs$Treatment)
+fix3 <- which(drugs$Treatment %in% c("drug x 3","Drug x 3","drug3"))
+drugs$Treatment[fix3] <- "drugs3"
+```
+
