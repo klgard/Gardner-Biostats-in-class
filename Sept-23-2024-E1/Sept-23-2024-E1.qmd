@@ -1,0 +1,30 @@
+---
+title: "Sept-23-2024-E1"
+---
+
+```{r}
+getwd()
+```
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(here)
+library(lubridate)
+```
+
+```{r}
+rabies <- read.csv(here("Rabies_Laboratory_Submissions.csv"))
+glimpse(rabies)
+rabies$Animal.Classification <- as.factor(rabies$Animal.Classification)
+rabies$Report.Date <- mdy(rabies$Report.Date)
+```
+# R thinks that the variable are integer, character, or numeric with a decimal
+
+
+```{r}
+?write.csv
+
+write.csv(rabies2, here("Rabies_Labratory_sumbissions.csv"))
+```
+

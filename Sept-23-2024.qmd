@@ -1,0 +1,44 @@
+---
+title: "Sept-20-2024"
+format: html
+editor: visual
+---
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(lubridate)
+library(here)
+```
+
+
+```{r}
+stats <- read.csv(here("stats2.csv"))
+glimpse(stats)
+```
+
+force a variable into factor data: 
+
+```{r}
+levels(stats$grad_year)
+stats$grad_year <- as.factor(stats$grad_year) 
+```
+
+
+#lets create a date data type
+```{r}
+stats$birthdate <- mdy(stats$birthdate)
+```
+
+
+Reproducible Data
+ Before: data management
+         .csv
+         non-prop
+         dates in excel
+         metadata
+ During: reproducible code
+         .qmd, scientific thinking vs. code is doing
+         narrate on steps
+ After: dynamic document (.qmd)
+       

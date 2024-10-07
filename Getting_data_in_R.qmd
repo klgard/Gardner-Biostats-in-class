@@ -1,0 +1,18 @@
+---
+title: "Data_in_R"
+author: "Kate Gardner"
+format: html
+editor: visual
+---
+
+```{r}
+rm(list=ls()) #clears R's environment
+library(tidyverse)
+library(here)
+```
+
+Put data into R using read.csv
+```{r}
+pets1 <- read.csv(here("Data", "pets.csv"))
+```
+

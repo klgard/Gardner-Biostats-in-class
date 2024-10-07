@@ -1,0 +1,60 @@
+---
+title: "Sept-20-2024"
+format: html
+editor: visual
+---
+
+## Setting up workspace 
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(here)
+```
+
+Data frames as a data structure
+
+Lets make a data frame
+First create two vectors
+```{r}
+dogs <- c("hank", "finn", "oscar") #character nominal data
+dog_years <- c(2.5, 4, 11) #numeric ratio data
+```
+
+Now bind together into a data frame
+```{r}
+my_dogs <- as.data.frame(cbind(dogs, dog_years))
+glimpse(my_dogs)
+```
+now make my_dogs$dog_years numeric
+```{r}
+my_dogs$dog_years <- as.numeric(my_dogs$dog_years)
+```
+
+
+How do we access elements of a data frame
+
+```{r}
+# INDEXING
+my_dogs[3,1]
+
+# COLUMN REFERENCE WITH $ AND INDEXING
+ my_dogs$dogs[3]
+```
+
+Write code to bring biostats responses .csv as a data frame
+```{r}
+stats <- read.csv(here("Data", "Biostats-responses.csv"))
+```
+
+
+
+
+
+
+
+
+
+```{r}
+
+```
+
