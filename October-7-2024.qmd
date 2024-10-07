@@ -1,0 +1,38 @@
+---
+title: "Oct-7-2024"
+author: "KG"
+format: html
+editor: visual
+---
+
+```{r}
+#basic set up
+rm(list = ls())
+library(tidyverse)
+library(here)
+```
+
+Read in the data and assign data types
+
+```{r}
+tomatoes <- read.csv(here("data", "tomato_data.csv"))
+tomatoes$Treatment <- as.factor(tomatoes$Treatment)
+levels(tomatoes$Treatment)
+```
+
+Fix Factor variable (== means exactly equal to)
+
+```{r}
+fix1 <- which(tomatoes$Treatment == "control")
+tomatoes$Treatment[fix1] <- "Control"
+```
+
+```{r}
+fix2 <- which(tomatoes$Treatment == "fertilizer")
+tomatoes$Treatment[fix2] <- "Fertilizer"
+levels(tomatoes$Treatment)
+```
+
+```{r}
+tomatoes$Treatment <- factor(tomatoes$Treatment)
+```
