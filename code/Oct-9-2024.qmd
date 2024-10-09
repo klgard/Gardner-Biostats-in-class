@@ -26,3 +26,21 @@ find all of the plants from fertilizer treatment with avg_tomato_weight_g > or e
 tomatoes |> filter(Avg_tomato_weight_g >= 145) |> View()
 ```
 
+
+
+
+
+
+Save changes to a new output file
+
+Make the output file
+```{r}
+dir.create(here("outputs"))
+```
+
+```{r}
+write.csv(tomatoes, here("outputs",
+                         "tomatoes_fixed.csv"), row.names = FALSE) #row.names=F prevents R from adding column of row numbers to the output file
+toms2 <- read.csv(here("outputs", "tomatoes_fixed.csv")) 
+```
+
