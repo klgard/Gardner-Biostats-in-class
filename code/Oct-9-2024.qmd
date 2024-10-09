@@ -1,0 +1,28 @@
+---
+title: "Oct-9-2024"
+format: html
+editor: visual
+---
+
+Set up
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(here)
+```
+
+Read in tomato data
+```{r}
+tomatoes <- read.csv(here("data", "tomato_data.csv"))
+```
+
+Get the 3rd, 7th, and 9th rows of data
+```{r}
+tomatoes |> slice(c(3,7,9)) |> View()
+```
+
+find all of the plants from fertilizer treatment with avg_tomato_weight_g > or equal to 145g
+```{r}
+tomatoes |> filter(Avg_tomato_weight_g >= 145) |> View()
+```
+
