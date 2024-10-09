@@ -5,6 +5,7 @@ editor: visual
 ---
 
 Set up
+
 ```{r}
 rm(list = ls())
 library(tidyverse)
@@ -12,28 +13,27 @@ library(here)
 ```
 
 Read in tomato data
+
 ```{r}
 tomatoes <- read.csv(here("data", "tomato_data.csv"))
 ```
 
 Get the 3rd, 7th, and 9th rows of data
+
 ```{r}
 tomatoes |> slice(c(3,7,9)) |> View()
 ```
 
-find all of the plants from fertilizer treatment with avg_tomato_weight_g > or equal to 145g
+find all of the plants from fertilizer treatment with avg_tomato_weight_g \> or equal to 145g
+
 ```{r}
 tomatoes |> filter(Avg_tomato_weight_g >= 145) |> View()
 ```
 
-
-
-
-
-
 Save changes to a new output file
 
 Make the output file
+
 ```{r}
 dir.create(here("outputs"))
 ```
@@ -43,4 +43,29 @@ write.csv(tomatoes, here("outputs",
                          "tomatoes_fixed.csv"), row.names = FALSE) #row.names=F prevents R from adding column of row numbers to the output file
 toms2 <- read.csv(here("outputs", "tomatoes_fixed.csv")) 
 ```
+
+# NoCo lead
+
+```{r}
+lead <- read.csv(here("data", "NoCoLead.csv"))
+```
+
+What if we want to know the average number of tests in the dataset
+
+```{r}
+lead |> summarise(
+  mean_num_tests = mean(num_tests)
+) |> View()
+```
+
+
+What is the mean number of tests per year
+```{r}
+lead |> 
+  group_by(Year) |> 
+  summarise(mean_test_per_year = mean(num_tests)
+            ) |>
+  View()
+```
+
 
