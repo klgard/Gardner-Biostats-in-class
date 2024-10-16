@@ -58,8 +58,8 @@ lead |> summarise(
 ) |> View()
 ```
 
-
 What is the mean number of tests per year
+
 ```{r}
 lead |> 
   group_by(Year) |> 
@@ -68,4 +68,6 @@ lead |>
   View()
 ```
 
+```{r}
 
+```
